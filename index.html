@@ -15,59 +15,82 @@
 <meta property="og:title" content="Ruifeng Liang — Data Scientist">
 <meta property="og:description" content="Master of Data Science (Monash) with three years of professional experience. Data analysis, visualisation and machine learning in Melbourne.">
 <meta property="og:url" content="https://ravenleung.github.io/">
+<meta property="og:locale" content="en_AU">
+<meta property="og:locale:alternate" content="zh_CN">
 <link rel="stylesheet" href="styles.css">
+
+<!-- 中文访客：首次绘制前先隐藏页面，避免看到一闪而过的英文（i18n.js 会移除这个 class）。
+     800ms 兜底：即使 i18n.js 加载失败，页面也不会一直空着。 -->
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('resume-lang');
+    var zh = saved ? saved === 'zh' : /^zh/i.test(navigator.language || '');
+    if (zh) {
+      document.documentElement.classList.add('i18n-loading');
+      setTimeout(function () {
+        document.documentElement.classList.remove('i18n-loading');
+      }, 800);
+    }
+  } catch (e) { /* storage blocked — English renders as-is */ }
+})();
+</script>
 </head>
 <body>
 
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main" data-i18n="a11y.skip">Skip to content</a>
 
 <header class="topbar">
   <div class="bar-inner">
     <a class="brand" href="#top">Ruifeng Liang</a>
     <nav aria-label="Sections">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#education">Education</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#experience" data-i18n="nav.experience">Experience</a>
+      <a href="#projects" data-i18n="nav.projects">Projects</a>
+      <a href="#education" data-i18n="nav.education">Education</a>
+      <a href="#skills" data-i18n="nav.skills">Skills</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
+    <div class="lang" role="group" aria-label="Language / 语言">
+      <button type="button" data-lang="en" aria-pressed="true" lang="en">EN</button>
+      <button type="button" data-lang="zh" aria-pressed="false" lang="zh-CN">中文</button>
+    </div>
   </div>
 </header>
 
 <main id="main">
 
   <section class="hero" id="top">
-    <p class="eyebrow">Data Scientist · Melbourne, Australia</p>
+    <p class="eyebrow" data-i18n="hero.eyebrow">Data Scientist · Melbourne, Australia</p>
     <h1>Ruifeng Liang</h1>
-    <p class="lede">
+    <p class="lede" data-i18n="hero.lede">
       Master of Data Science (Monash University) with three years of professional experience in
       service sales and engineering. I turn operational data into decisions — building dashboards,
       running customer segmentation, and automating the pipelines in between — and I work
       comfortably on both the business and the technical side of a problem.
     </p>
     <ul class="facts">
-      <li>3 years industry experience</li>
-      <li>Available within 2 months</li>
-      <li>English · Mandarin · Cantonese</li>
-      <li>IELTS 7.5</li>
+      <li data-i18n="hero.fact1">3 years industry experience</li>
+      <li data-i18n="hero.fact2">Available within 2 months</li>
+      <li data-i18n="hero.fact3">English · Mandarin · Cantonese</li>
+      <li data-i18n="hero.fact4">IELTS 7.5</li>
     </ul>
     <p class="actions">
-      <a class="btn" href="mailto:leungricmik@gmail.com">Email me</a>
-      <a class="btn ghost" href="https://github.com/RavenLeung">GitHub</a>
+      <a class="btn" href="mailto:leungricmik@gmail.com" data-i18n="hero.email">Email me</a>
+      <a class="btn ghost" href="https://github.com/RavenLeung" data-i18n="hero.github">GitHub</a>
     </p>
   </section>
 
   <section class="block" id="about">
-    <h2>About</h2>
+    <h2 data-i18n="sec.about">About</h2>
     <div class="body">
-      <p>
+      <p data-i18n="about.p1">
         I started out in mechanical engineering and equipment maintenance, then moved into service
         sales at Otis Elevator, where I managed 300+ maintenance contracts covering 1,500+ assets.
         That role is where data became the job: I built the KPI reporting the service team ran on,
         and used customer segmentation to lift retention.
       </p>
-      <p>
+      <p data-i18n="about.p2">
         I completed a Master of Data Science at Monash in 2025 to formalise the technical side —
         machine learning, statistical modelling, big data and NLP. What I want from a role is the
         same thing that kept me interested at Otis: messy operational data, a decision that depends
@@ -77,46 +100,46 @@
   </section>
 
   <section class="block" id="experience">
-    <h2>Experience</h2>
+    <h2 data-i18n="sec.experience">Experience</h2>
     <div class="body">
 
       <article class="entry">
         <header class="entry-head">
-          <h3>Maintenance Service Sales Representative</h3>
-          <p class="meta"><span class="org">Otis Elevator Company</span> · Guangzhou, China</p>
-          <p class="dates">Sep 2021 – May 2023</p>
+          <h3 data-i18n="exp.otis.role">Maintenance Service Sales Representative</h3>
+          <p class="meta" data-i18n="exp.otis.meta"><span class="org">Otis Elevator Company</span> · Guangzhou, China</p>
+          <p class="dates" data-i18n="exp.otis.dates">Sep 2021 – May 2023</p>
         </header>
         <ul class="points">
-          <li>Managed <strong>300+ maintenance contracts</strong> covering <strong>1,500+ assets</strong>.</li>
-          <li>Built interactive KPI reports used by the service team, lifting the contract renewal rate to <strong>95%</strong>.</li>
-          <li>Ran customer segmentation and retention analysis, increasing repeat business by <strong>10%</strong>.</li>
-          <li>Kept account health in range: receivable recovery <strong>above 98%</strong>, bad-debt rate <strong>below 0.5%</strong>.</li>
-          <li>Integrated IoT equipment monitoring for real-time performance tracking, cutting customer complaints by <strong>10%+</strong>.</li>
+          <li data-i18n="exp.otis.b1">Managed <strong>300+ maintenance contracts</strong> covering <strong>1,500+ assets</strong>.</li>
+          <li data-i18n="exp.otis.b2">Built interactive KPI reports used by the service team, lifting the contract renewal rate to <strong>95%</strong>.</li>
+          <li data-i18n="exp.otis.b3">Ran customer segmentation and retention analysis, increasing repeat business by <strong>10%</strong>.</li>
+          <li data-i18n="exp.otis.b4">Kept account health in range: receivable recovery <strong>above 98%</strong>, bad-debt rate <strong>below 0.5%</strong>.</li>
+          <li data-i18n="exp.otis.b5">Integrated IoT equipment monitoring for real-time performance tracking, cutting customer complaints by <strong>10%+</strong>.</li>
         </ul>
       </article>
 
       <article class="entry">
         <header class="entry-head">
-          <h3>Intern Equipment Engineer</h3>
-          <p class="meta"><span class="org">SGD Pharma</span> · Zhanjiang, China</p>
-          <p class="dates">Dec 2020 – Jun 2021</p>
+          <h3 data-i18n="exp.sgd.role">Intern Equipment Engineer</h3>
+          <p class="meta" data-i18n="exp.sgd.meta"><span class="org">SGD Pharma</span> · Zhanjiang, China</p>
+          <p class="dates" data-i18n="exp.sgd.dates">Dec 2020 – Jun 2021</p>
         </header>
         <ul class="points">
-          <li>Collected and analysed production data across <strong>5+ plant improvement projects</strong>, including efficiency work on furnace flue-gas desulfurisation and denitrification (FGD/DeNOx) systems.</li>
-          <li>Designed a cooling system for the glass-furnace monitoring unit — real-time temperature sensors plus pre-alarm logic — improving equipment reliability and safety near high-temperature furnaces.</li>
+          <li data-i18n="exp.sgd.b1">Collected and analysed production data across <strong>5+ plant improvement projects</strong>, including efficiency work on furnace flue-gas desulfurisation and denitrification (FGD/DeNOx) systems.</li>
+          <li data-i18n="exp.sgd.b2">Designed a cooling system for the glass-furnace monitoring unit — real-time temperature sensors plus pre-alarm logic — improving equipment reliability and safety near high-temperature furnaces.</li>
         </ul>
       </article>
 
       <article class="entry">
         <header class="entry-head">
-          <h3>Retail Associate</h3>
-          <p class="meta"><span class="org">Yilian Trading Co., Ltd.</span> · Guangzhou, China</p>
-          <p class="dates">Jul 2018 – Sep 2018</p>
+          <h3 data-i18n="exp.yl.role">Retail Associate</h3>
+          <p class="meta" data-i18n="exp.yl.meta"><span class="org">Yilian Trading Co., Ltd.</span> · Guangzhou, China</p>
+          <p class="dates" data-i18n="exp.yl.dates">Jul 2018 – Sep 2018</p>
         </header>
         <ul class="points">
-          <li>Managed sales data and forecasting, reaching <strong>¥100,000+ in monthly personal sales</strong>.</li>
-          <li>Ran product demonstrations and consultations that measurably improved conversion.</li>
-          <li>Maintained the inventory database behind supply-chain decisions.</li>
+          <li data-i18n="exp.yl.b1">Managed sales data and forecasting, reaching <strong>¥100,000+ in monthly personal sales</strong>.</li>
+          <li data-i18n="exp.yl.b2">Ran product demonstrations and consultations that measurably improved conversion.</li>
+          <li data-i18n="exp.yl.b3">Maintained the inventory database behind supply-chain decisions.</li>
         </ul>
       </article>
 
@@ -124,13 +147,13 @@
   </section>
 
   <section class="block" id="projects">
-    <h2>Projects</h2>
+    <h2 data-i18n="sec.projects">Projects</h2>
     <div class="body">
       <div class="cards">
 
         <article class="card">
-          <h3>Siril Deep Space Image Processing Workflow <span class="tag">Ongoing</span></h3>
-          <p>
+          <h3><span data-i18n="proj.siril.title">Siril Deep Space Image Processing Workflow</span> <span class="tag" data-i18n="proj.ongoing">Ongoing</span></h3>
+          <p data-i18n="proj.siril.desc">
             An end-to-end astrophotography pipeline in Siril: calibration (bias/dark/flat),
             registration, stacking, photometric colour calibration and background extraction.
             Scripted with Siril batch commands (.ssf/.txt) for automated preprocessing and
@@ -138,41 +161,49 @@
             (wavelet/à trous, Richardson–Lucy) to recover faint structure without smearing star
             profiles. Results are evaluated quantitatively with SNR, PSNR/SSIM and star FWHM.
           </p>
-          <p class="tags"><span>Siril</span><span>Scripting</span><span>Image processing</span><span>SNR / PSNR / SSIM</span></p>
+          <p class="tags">
+            <span data-i18n="proj.siril.t1">Siril</span><span data-i18n="proj.siril.t2">Scripting</span><span data-i18n="proj.siril.t3">Image processing</span><span data-i18n="proj.siril.t4">SNR / PSNR / SSIM</span>
+          </p>
         </article>
 
         <article class="card">
-          <h3>Micro Oasis — Full-stack Web Platform</h3>
-          <p>
+          <h3 data-i18n="proj.micro.title">Micro Oasis — Full-stack Web Platform</h3>
+          <p data-i18n="proj.micro.desc">
             Designed and implemented the full-stack architecture (Vue + Flask + MySQL) for a
             dynamic, database-driven site, including interactive dashboards for real-time
             visualisation. Fine-tuned and deployed open-source image-generation models, cutting
             response time by <strong>30%</strong> while improving output quality.
           </p>
-          <p class="tags"><span>Vue</span><span>Flask</span><span>MySQL</span><span>Model deployment</span></p>
+          <p class="tags">
+            <span data-i18n="proj.micro.t1">Vue</span><span data-i18n="proj.micro.t2">Flask</span><span data-i18n="proj.micro.t3">MySQL</span><span data-i18n="proj.micro.t4">Model deployment</span>
+          </p>
         </article>
 
         <article class="card">
-          <h3>Victorian Crime EDA</h3>
-          <p>
+          <h3 data-i18n="proj.crime.title">Victorian Crime EDA</h3>
+          <p data-i18n="proj.crime.desc">
             Collected and cleaned crime statistics from multiple Victorian regions, integrating
             open government datasets, then applied clustering and geospatial analysis to surface
             hotspots and temporal patterns. Delivered Tableau dashboards with interactive heatmaps
             and time-series trend charts so non-technical stakeholders could read distribution and
             change at a glance.
           </p>
-          <p class="tags"><span>Python</span><span>Clustering</span><span>Geospatial</span><span>Tableau</span></p>
+          <p class="tags">
+            <span data-i18n="proj.crime.t1">Python</span><span data-i18n="proj.crime.t2">Clustering</span><span data-i18n="proj.crime.t3">Geospatial</span><span data-i18n="proj.crime.t4">Tableau</span>
+          </p>
         </article>
 
         <article class="card">
-          <h3>Ergonomic Keyboard Design <span class="tag">Ongoing</span></h3>
-          <p>
+          <h3><span data-i18n="proj.kb.title">Ergonomic Keyboard Design</span> <span class="tag" data-i18n="proj.ongoing">Ongoing</span></h3>
+          <p data-i18n="proj.kb.desc">
             Designing a split ergonomic mechanical keyboard on an STM32 microcontroller platform:
             QMK/VIAL firmware with programmable layouts and macros, human-factors decisions around
             split layout, adjustable tenting and key mapping, and PCB/case prototyping through CAD
             and 3D printing.
           </p>
-          <p class="tags"><span>STM32</span><span>QMK / VIAL</span><span>CAD</span><span>3D printing</span></p>
+          <p class="tags">
+            <span data-i18n="proj.kb.t1">STM32</span><span data-i18n="proj.kb.t2">QMK / VIAL</span><span data-i18n="proj.kb.t3">CAD</span><span data-i18n="proj.kb.t4">3D printing</span>
+          </p>
         </article>
 
       </div>
@@ -180,42 +211,42 @@
   </section>
 
   <section class="block" id="education">
-    <h2>Education</h2>
+    <h2 data-i18n="sec.education">Education</h2>
     <div class="body">
 
       <article class="entry">
         <header class="entry-head">
-          <h3>Master of Data Science</h3>
-          <p class="meta"><span class="org">Monash University</span> · Melbourne, Australia</p>
-          <p class="dates">Jul 2023 – May 2025</p>
+          <h3 data-i18n="edu.monash.degree">Master of Data Science</h3>
+          <p class="meta" data-i18n="edu.monash.meta"><span class="org">Monash University</span> · Melbourne, Australia</p>
+          <p class="dates" data-i18n="edu.monash.dates">Jul 2023 – May 2025</p>
         </header>
         <ul class="points">
-          <li>Key courses: Machine Learning, Data Mining, Statistical Modelling, Big Data, NLP.</li>
-          <li>Capstone: a data-driven website with full-stack architecture, database-backed dashboards and AI image-generation capabilities.</li>
+          <li data-i18n="edu.monash.b1">Key courses: Machine Learning, Data Mining, Statistical Modelling, Big Data, NLP.</li>
+          <li data-i18n="edu.monash.b2">Capstone: a data-driven website with full-stack architecture, database-backed dashboards and AI image-generation capabilities.</li>
         </ul>
       </article>
 
       <article class="entry">
         <header class="entry-head">
-          <h3>Bachelor of Mechanical Design, Manufacturing and Automation</h3>
-          <p class="meta"><span class="org">Dongguan University of Technology</span> · China</p>
-          <p class="dates">Sep 2017 – Jun 2021</p>
+          <h3 data-i18n="edu.dgut.degree">Bachelor of Mechanical Design, Manufacturing and Automation</h3>
+          <p class="meta" data-i18n="edu.dgut.meta"><span class="org">Dongguan University of Technology</span> · China</p>
+          <p class="dates" data-i18n="edu.dgut.dates">Sep 2017 – Jun 2021</p>
         </header>
         <ul class="points">
-          <li>Relevant coursework: Project Management, Statistics, CAD.</li>
-          <li>Head of the Student Union Publicity Department for two years.</li>
-          <li>Two-time university third-class scholarship.</li>
+          <li data-i18n="edu.dgut.b1">Relevant coursework: Project Management, Statistics, CAD.</li>
+          <li data-i18n="edu.dgut.b2">Head of the Student Union Publicity Department for two years.</li>
+          <li data-i18n="edu.dgut.b3">Two-time university third-class scholarship.</li>
         </ul>
       </article>
 
       <article class="entry">
         <header class="entry-head">
-          <h3>Exchange Program</h3>
-          <p class="meta"><span class="org">Conservatoire National des Arts et Métiers</span> · France</p>
-          <p class="dates">Sep 2019 – Jul 2020</p>
+          <h3 data-i18n="edu.cnam.degree">Exchange Program</h3>
+          <p class="meta" data-i18n="edu.cnam.meta"><span class="org">Conservatoire National des Arts et Métiers</span> · France</p>
+          <p class="dates" data-i18n="edu.cnam.dates">Sep 2019 – Jul 2020</p>
         </header>
         <ul class="points">
-          <li>Focus: Mechanical Vibration, Solid Mechanics, Structural Mechanics, Project Management.</li>
+          <li data-i18n="edu.cnam.b1">Focus: Mechanical Vibration, Solid Mechanics, Structural Mechanics, Project Management.</li>
         </ul>
       </article>
 
@@ -223,43 +254,43 @@
   </section>
 
   <section class="block" id="skills">
-    <h2>Skills</h2>
+    <h2 data-i18n="sec.skills">Skills</h2>
     <div class="body">
       <dl class="skills">
         <div>
-          <dt>Programming &amp; databases</dt>
-          <dd>Python, R, SQL, HTML/CSS/JavaScript</dd>
+          <dt data-i18n="skills.pg">Programming &amp; databases</dt>
+          <dd data-i18n="skills.pg.d">Python, R, SQL, HTML/CSS/JavaScript</dd>
         </div>
         <div>
-          <dt>Analysis &amp; visualisation</dt>
-          <dd>Pandas, NumPy, Matplotlib, Seaborn, Tableau, Power BI</dd>
+          <dt data-i18n="skills.av">Analysis &amp; visualisation</dt>
+          <dd data-i18n="skills.av.d">Pandas, NumPy, Matplotlib, Seaborn, Tableau, Power BI</dd>
         </div>
         <div>
-          <dt>Machine learning &amp; statistics</dt>
-          <dd>Regression, classification, clustering, NLP, feature engineering</dd>
+          <dt data-i18n="skills.ml">Machine learning &amp; statistics</dt>
+          <dd data-i18n="skills.ml.d">Regression, classification, clustering, NLP, feature engineering</dd>
         </div>
         <div>
-          <dt>Data processing</dt>
-          <dd>ETL, text preprocessing, language data analysis, logical database design</dd>
+          <dt data-i18n="skills.dp">Data processing</dt>
+          <dd data-i18n="skills.dp.d">ETL, text preprocessing, language data analysis, logical database design</dd>
         </div>
         <div>
-          <dt>Tools</dt>
-          <dd>Git, MS Office Suite</dd>
+          <dt data-i18n="skills.tools">Tools</dt>
+          <dd data-i18n="skills.tools.d">Git, MS Office Suite</dd>
         </div>
         <div>
-          <dt>Languages</dt>
-          <dd>English (IELTS 7.5), Mandarin (native), Cantonese (native)</dd>
+          <dt data-i18n="skills.lang">Languages</dt>
+          <dd data-i18n="skills.lang.d">English (IELTS 7.5), Mandarin (native), Cantonese (native)</dd>
         </div>
       </dl>
     </div>
   </section>
 
   <section class="block" id="leadership">
-    <h2>Leadership</h2>
+    <h2 data-i18n="sec.leadership">Leadership</h2>
     <div class="body">
       <ul class="points">
-        <li>Head of Publicity for the Student Union at Dongguan University of Technology — two years running student events and campus campaigns.</li>
-        <li>Initiated a weekly cross-departmental technical exchange during my factory internship, bringing interns from different disciplines together on engineering practice, programming and data analysis.</li>
+        <li data-i18n="lead.b1">Head of Publicity for the Student Union at Dongguan University of Technology — two years running student events and campus campaigns.</li>
+        <li data-i18n="lead.b2">Initiated a weekly cross-departmental technical exchange during my factory internship, bringing interns from different disciplines together on engineering practice, programming and data analysis.</li>
       </ul>
     </div>
   </section>
@@ -268,8 +299,8 @@
 
 <footer class="contact" id="contact">
   <div class="contact-inner">
-    <h2>Contact</h2>
-    <p>
+    <h2 data-i18n="sec.contact">Contact</h2>
+    <p data-i18n="contact.intro">
       Based in Melbourne and available within two months. Open to data science, analytics and
       operations roles.
     </p>
@@ -277,11 +308,11 @@
       <a href="mailto:leungricmik@gmail.com">leungricmik@gmail.com</a>
       <a href="https://github.com/RavenLeung">github.com/RavenLeung</a>
     </p>
-    <p class="fine">© <span id="year">2026</span> Ruifeng Liang · Melbourne, Australia</p>
+    <p class="fine" data-i18n="contact.fine">© {year} Ruifeng Liang · Melbourne, Australia</p>
   </div>
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="i18n.js"></script>
 
 </body>
 </html>

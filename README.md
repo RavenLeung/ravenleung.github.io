@@ -25,6 +25,23 @@ git add -A && git commit -m "..." && git push
 ## Structure
 
 ```
-index.html    single page: hero → experience → projects → skills → contact
-styles.css    responsive, light/dark via prefers-color-scheme
+index.html    single page: hero → about → experience → projects → education → skills → leadership → contact
+styles.css    responsive, light/dark via prefers-color-scheme, print stylesheet
+i18n.js       English + 简体中文 dictionary and the language switcher logic
 ```
+
+## Internationalisation
+
+- English text lives inline in `index.html` (page stays readable and crawlable without JS).
+- Every translatable element carries `data-i18n="key"`; `i18n.js` replaces its innerHTML with
+  the value for the active language, so values may contain inline markup like `<strong>`.
+- Keys are **flat strings** (`"nav.about"`, `"exp.otis.b1"`) — not nested paths. Keep the `en`
+  and `zh` key sets identical; `apply()` logs a console warning for any key it cannot resolve.
+- Language resolution order: saved preference (`localStorage['resume-lang']`) → `navigator.language`
+  → English. The switcher in the top bar writes the preference.
+- `{year}` inside a value is replaced with the current year at runtime.
+- Adding a language: add a top-level block under `I18N` in `i18n.js`, add a `<button>` to `.lang`
+  in `index.html`. Nothing else.
+- The inline script in `<head>` hides the page for ~800ms while Chinese is applied, so visitors
+  never see a flash of English first (with a timeout as a failsafe if `i18n.js` fails to load).
+

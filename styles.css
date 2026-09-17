@@ -122,6 +122,39 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   }
 }
 
+/* ── Language switcher ──────────────────────────────────── */
+.lang {
+  display: flex;
+  flex: none;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.lang button {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  font: inherit;
+  font-size: .8125rem;
+  font-weight: 550;
+  line-height: 1;
+  padding: .34rem .6rem;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease;
+}
+.lang button:hover { background: var(--bg-soft); color: var(--fg); }
+.lang button[aria-pressed="true"] {
+  background: var(--accent);
+  color: #fff;
+  cursor: default;
+}
+
+/* 切换到中文时首屏防闪烁（由 <head> 内联脚本设置，i18n.js 移除） */
+html.i18n-loading body { visibility: hidden; }
+
 /* ── Layout shell ───────────────────────────────────────── */
 main {
   max-width: var(--shell);
